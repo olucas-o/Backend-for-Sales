@@ -1,30 +1,28 @@
 import express from 'express';
 import cors from 'cors';
-import router from './routes';
+import 'reflect-metadata';
 import 'express-async-errors';
-import ErrorHandlerMiddleware from '../Middleware/ErrorHandlerMiddleware';
+
+import ErrorHandlerMiddleware from '../middleware/ErrorHandlerMiddleware';
 import { AppDataSource } from '../typeorm/data-source';
-
-
+import router from './routes';
 
 AppDataSource.initialize()
-.then(async () => {
+  .then(async () => {
+    console.log('Conectado ao banco de dados');
+    const app = express();
 
-  console.log('Conectado ao banco de dados');
-  const app = express();
+    app.use(cors());
+    app.use(express.json());
 
-  app.use(cors());
-  app.use(express.json());
+    app.use(router);
+    app.use(ErrorHandlerMiddleware.handleError);
 
-  app.use(router);
-  app.use(ErrorHandlerMiddleware.handleError);
-
-  const PORT = 3333;
-  app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+    const PORT = 3333;
+    app.listen(PORT, () => {
+      console.log(`Servidor rodando na porta ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Erro ao conectar ao banco de dados:', error);
   });
-})
-.catch( error => {
-console.error('Erro ao conectar ao banco de dados:', error);
-});
-
