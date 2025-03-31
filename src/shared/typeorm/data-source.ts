@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import 'dotenv/config';
 
-const port = Number(process.env.DB_PORT);
+const port = process.env.DB_PORT as number | undefined;
 
 export const AppDataSource = new DataSource({
   type: 'postgres',

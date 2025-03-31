@@ -8,21 +8,21 @@ import {
 
 @Entity('products')
 export class Product {
-  @PrimaryGeneratedColumn('uuid')
-  id?: string;
+  @PrimaryGeneratedColumn()
+  id: string;
 
-  @Column()
-  name?: string;
+  @Column({ type: 'text' })
+  name: string;
 
-  @Column('decimal')
-  price?: number;
+  @Column({ type: 'decimal' })
+  price: number;
 
-  @Column('int')
-  quantity?: number;
+  @Column({ type: 'int' })
+  quantity: number;
 
-  @CreateDateColumn()
-  createdAt?: Date;
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at: Date;
 
-  @UpdateDateColumn()
-  updatedAt?: Date;
+  @UpdateDateColumn({ type: 'timestamp' })
+  updated_at: Date;
 }

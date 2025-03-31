@@ -2,6 +2,12 @@ import AppError from '../../../shared/erros/AppError';
 import { Product } from '../database/entities/Product';
 import { ProductsRepository } from '../database/entities/Repositiries/ProductsRepository';
 
+interface ICreateProduct {
+  name: string;
+  price: number;
+  quantity: number;
+}
+
 export default class CreateProductService {
   public async execute({
     name,
