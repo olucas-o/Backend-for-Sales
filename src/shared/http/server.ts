@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'reflect-metadata';
 import 'express-async-errors';
+import { errors } from 'celebrate';
 
 import ErrorHandlerMiddleware from '../middleware/ErrorHandlerMiddleware';
 import { AppDataSource } from '../typeorm/data-source';
@@ -16,6 +17,7 @@ AppDataSource.initialize()
     app.use(express.json());
 
     app.use(router);
+    app.use(errors());
     app.use(ErrorHandlerMiddleware.handleError);
 
     const PORT = 3333;

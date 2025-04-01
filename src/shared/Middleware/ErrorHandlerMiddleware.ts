@@ -13,7 +13,7 @@ export default class ErrorHandlerMiddleware {
         type: 'error',
         message: error.message,
       });
-      return
+      return;
     }
     res.status(500).json({
       type: 'error',
