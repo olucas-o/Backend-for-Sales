@@ -31,9 +31,3 @@ export default class CreateProductService {
     return product;
   }
 }
-
-interface ICreateProduct {
-  name: string;
-  price: number;
-  quantity: number;
-}

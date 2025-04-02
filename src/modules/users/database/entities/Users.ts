@@ -15,7 +15,7 @@ export class Users {
   name: string;
 
   @Column({ type: 'text' })
-  email : string;
+  email: string;
 
   @Column({ type: 'text' })
   password: string;
