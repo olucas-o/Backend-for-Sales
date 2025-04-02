@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class  npmConfigName1743544938716 implements MigrationInterface {
+export class npmConfigName1743544938716 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
       await queryRunner.createTable(
         new Table({
@@ -18,8 +18,9 @@ export class  npmConfigName1743544938716 implements MigrationInterface {
               type: 'varchar',
             },
             {
-              name: 'mail',
+              name: 'email',
               type: 'varchar',
+              isUnique: true,
             },
             {
               name: 'password',
@@ -34,3 +35,4 @@ export class  npmConfigName1743544938716 implements MigrationInterface {
       await queryRunner.dropTable('users');
     }
 }
+
