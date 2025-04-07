@@ -5,8 +5,8 @@ export default class SessionController {
   async create(request: Request, response: Response): Promise<Response> {
     const { email, password } = request.body;
     const sessionService = new SessionUserService();
-    const { user, token } = await sessionService.execute({ email, password });
+    const  userToken  = await sessionService.execute({ email, password });
 
-    return response.json({ user, token });
+    return response.json( userToken );
   }
 }
