@@ -11,6 +11,6 @@ router.get('/health', (req, res) => {
 
 router.use('/products', productsRouter);
 router.use('/users', usersRouter);
-router.use('/session',sessionRouter);
+router.use('/session', sessionRouter);
 
 export default router;
