@@ -26,6 +26,11 @@ export class npmConfigName1744045494322 implements MigrationInterface {
             name: 'password',
             type: 'varchar',
           },
+          {
+            name: 'avatar',
+            type: 'varchar',
+            isNullable: true,
+          },
         ],
       }),
     );

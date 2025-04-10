@@ -20,6 +20,9 @@ export class Users {
   @Column({ type: 'text' })
   password: string;
 
+  @Column()
+  avatar: string;
+
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;
 
