@@ -10,12 +10,13 @@ export default class UserController {
   }
 
   public async create(request: Request, response: Response): Promise<void> {
-    const { name, email, password } = request.body;
+    const { name, email, password, avatar = null } = request.body;
     const createUserService = new CreateUserService();
     const user = await createUserService.execute({
       name,
       email,
       password,
+      avatar,
     });
     response.json(user);
   }

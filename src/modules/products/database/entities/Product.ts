@@ -20,6 +20,10 @@ export class Product {
   @Column({ type: 'int' })
   quantity: number;
 
+
+  @Column('jsonb', { nullable: true })
+  description: Record<string, any>;
+
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;
 

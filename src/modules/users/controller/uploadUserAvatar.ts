@@ -2,7 +2,8 @@ import { Request, Response } from 'express';
 import UpdateUserAvatarService from '../services/uploadUserAvatarService';
 
 export default class UpdateAvatarController {
-async update(request: Request, response: Response): Promise<Response> {
+async update(request: Request, response: Response): Promise<void> {
+  console.log(request.file)
     const updateUserAvatar = new UpdateUserAvatarService();
 
     const user = await updateUserAvatar.execute({
@@ -10,7 +11,7 @@ async update(request: Request, response: Response): Promise<Response> {
     avatarFileName: request.file?.filename as string,
     });
 
-    return response.json(user);
+    response.json(user);
     }
 }
 

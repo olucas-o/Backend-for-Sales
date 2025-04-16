@@ -7,10 +7,11 @@ interface ICreateUser {
   name: string;
   email: string;
   password: string;
+  avatar: string | null;
 }
 
 export default class CreateUserService {
-  public async execute({ name, email, password }: ICreateUser): Promise<Users> {
+  public async execute({ name, email, password, avatar }: ICreateUser): Promise<Users> {
     const emailExists = await UsersRepository.findByEmail(email);
 
     if (emailExists) {
@@ -28,6 +29,7 @@ export default class CreateUserService {
       name,
       email,
       password: passHash,
+      avatar,
     });
 
     await UsersRepository.save(user);

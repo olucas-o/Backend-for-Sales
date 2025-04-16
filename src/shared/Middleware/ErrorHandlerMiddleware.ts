@@ -8,6 +8,8 @@ export default class ErrorHandlerMiddleware {
     res: Response,
     _next: NextFunction,
   ) {
+    console.error('🔥 Erro capturado pelo middleware:', error);
+
     if (error instanceof AppError) {
       res.status(error.statusCode).json({
         type: 'error',
@@ -15,9 +17,11 @@ export default class ErrorHandlerMiddleware {
       });
       return;
     }
+
     res.status(500).json({
       type: 'error',
       message: 'Internal server error',
     });
   }
 }
+

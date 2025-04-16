@@ -8,7 +8,7 @@ import {
 
 @Entity('users')
 export class Users {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: 'text' })
@@ -20,8 +20,8 @@ export class Users {
   @Column({ type: 'text' })
   password: string;
 
-  @Column()
-  avatar: string;
+  @Column('jsonb', { nullable: true })
+  avatar: string | null ;
 
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;
