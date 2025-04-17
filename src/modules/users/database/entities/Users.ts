@@ -21,7 +21,7 @@ export class Users {
   password: string;
 
   @Column('jsonb', { nullable: true })
-  avatar: string | null ;
+  avatar: string | null;
 
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;

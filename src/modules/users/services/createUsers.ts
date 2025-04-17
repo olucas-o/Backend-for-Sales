@@ -11,7 +11,12 @@ interface ICreateUser {
 }
 
 export default class CreateUserService {
-  public async execute({ name, email, password, avatar }: ICreateUser): Promise<Users> {
+  public async execute({
+    name,
+    email,
+    password,
+    avatar,
+  }: ICreateUser): Promise<Users> {
     const emailExists = await UsersRepository.findByEmail(email);
 
     if (emailExists) {

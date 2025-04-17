@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import  UpdateAvatarController  from '../controller/uploadUserAvatar';
-import uploadConfig from '../../../config/upload'
+import UpdateAvatarController from '../controller/uploadUserAvatar';
+import uploadConfig from '../../../config/upload';
 import multer from 'multer';
 import AuthMiddleware from '../../../shared/middleware/authMiddleware';
 
