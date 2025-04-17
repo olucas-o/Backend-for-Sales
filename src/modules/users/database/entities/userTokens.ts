@@ -8,19 +8,19 @@ import {
 } from 'typeorm';
 @Entity('user_tokens')
 export class UserTokens {
-@PrimaryGeneratedColumn('increment')
-id: number;
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
-@Column()
-@Generated('uuid')
-token: string;
+  @Column()
+  @Generated('uuid')
+  token: string;
 
-@Column()
-user_id: number;
+  @Column()
+  user_id: number;
 
-@CreateDateColumn()
-created_at: Date;
+  @CreateDateColumn()
+  created_at: Date;
 
-@UpdateDateColumn()
-updated_at: Date;
+  @UpdateDateColumn()
+  updated_at: Date;
 }

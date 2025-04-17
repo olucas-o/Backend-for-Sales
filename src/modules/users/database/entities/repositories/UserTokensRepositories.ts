@@ -8,13 +8,13 @@ export const UserTokensRepositories = AppDataSource.getRepository(
     return this.findOne({ where: { token } });
   },
 
-  async generate(user_id: number): Promise<UserTokens| undefined> {
+  async generate(user_id: number): Promise<UserTokens | undefined> {
     const userToken = this.create({
       user_id,
     });
 
     await this.save(userToken);
 
-    return userToken
-  }
+    return userToken;
+  },
 });
