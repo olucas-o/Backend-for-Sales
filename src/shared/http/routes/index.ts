@@ -3,6 +3,7 @@ import productsRouter from '../../../modules/products/routers/productRouter';
 import usersRouter from '../../../modules/users/routers/UserRouter';
 import sessionRouter from '../../../modules/users/routers/sessionRouter';
 import avatarRouter from '../../../modules/users/routers/avatarRouter';
+import passwordRouter from '../../../modules/users/routers/passwordRouter';
 
 const router = Router();
 
@@ -14,5 +15,6 @@ router.use('/products', productsRouter);
 router.use('/users', usersRouter);
 router.use('/session', sessionRouter);
 router.use('/avatar', avatarRouter);
+router.use('/password', passwordRouter);
 
 export default router;

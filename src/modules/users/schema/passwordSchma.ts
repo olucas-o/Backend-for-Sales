@@ -1,11 +1,15 @@
-import { Joi } from "celebrate";
+import { celebrate, Joi, Segments } from 'celebrate';
 
-export const forgotPasswordSchema = Joi.object({
-  email: Joi.string().email().required()
-  });
+export const forgotPasswordSchema = celebrate({
+  [Segments.BODY]: {
+    email: Joi.string().email().required(),
+  },
+});
 
-export const resetPasswordSchema = Joi.object({
-  token: Joi.string().required(),
-  password: Joi.string().required(),
-  passwordConfirmation: Joi.string().valid(Joi.ref('password')).required()
+export const resetPasswordSchema = celebrate({
+  [Segments.BODY]: {
+    token: Joi.string().uuid().required(),
+    password: Joi.string().required(),
+    passwordConfirmation: Joi.string().valid(Joi.ref('password')).required(),
+  },
 });
