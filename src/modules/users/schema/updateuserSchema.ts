@@ -1,4 +1,4 @@
-import { celebrate, Joi, Segments } from "celebrate";
+import { celebrate, Joi, Segments } from 'celebrate';
 
 export const updateUserSchema = celebrate({
   [Segments.BODY]: {
@@ -7,10 +7,10 @@ export const updateUserSchema = celebrate({
     old_password: Joi.string(),
     password: Joi.string().optional(),
     password_confirmation: Joi.string()
-    .valid(Joi.ref('password'))
-    .when('password', {
-    is: Joi.exist(),
-    then: Joi.required(),
-    }),
-  }
-})
+      .valid(Joi.ref('password'))
+      .when('password', {
+        is: Joi.exist(),
+        then: Joi.required(),
+      }),
+  },
+});

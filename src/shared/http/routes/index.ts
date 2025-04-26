@@ -4,6 +4,7 @@ import usersRouter from '../../../modules/users/routers/UserRouter';
 import sessionRouter from '../../../modules/users/routers/sessionRouter';
 import avatarRouter from '../../../modules/users/routers/avatarRouter';
 import passwordRouter from '../../../modules/users/routers/passwordRouter';
+import profileRouter from '../../../modules/users/routers/profileRoutes';
 
 const router = Router();
 
@@ -13,8 +14,9 @@ router.get('/health', (req, res) => {
 
 router.use('/products', productsRouter);
 router.use('/users', usersRouter);
-router.use('/session', sessionRouter);
-router.use('/avatar', avatarRouter);
-router.use('/password', passwordRouter);
+router.use('/sessions', sessionRouter);
+router.use('/avatars', avatarRouter);
+router.use('/passwords', passwordRouter);
+router.use('/profiles', profileRouter);
 
 export default router;
