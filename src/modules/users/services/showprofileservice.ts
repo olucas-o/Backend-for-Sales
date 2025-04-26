@@ -3,12 +3,12 @@ import { UsersRepository } from '../database/entities/repositories/userRepositor
 import { Users } from '../database/entities/Users';
 
 interface IShowProfileRequest {
-  user_id: number;
+  userId: number;
 }
 
 export default class ShowProfileService {
-  public async execute({ user_id }: IShowProfileRequest): Promise<Users> {
-    const user = await UsersRepository.findId(user_id);
+  public async execute({ userId }: IShowProfileRequest): Promise<Users> {
+    const user = await UsersRepository.findId(userId);
 
     if (!user) {
       throw new AppError('User not found', 404);
