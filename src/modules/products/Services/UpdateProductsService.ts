@@ -23,7 +23,6 @@ export default class UpdateProductService {
       const productWithSameName = await ProductsRepository.findByName(name);
       if (productWithSameName && productWithSameName.id !== id) {
         throw new Error('Already has a Product with this name');
-        6;
       }
     }
     if (name) productExists.name = name;

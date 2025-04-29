@@ -1,5 +1,5 @@
-import { Customer } from '../database/Customers';
-import { customersRepository } from '../database/repositories/custumersRepositoies';
+import { Customer } from '../database/entities/Customers';
+import { customersRepository } from '../database/entities/repositories/custumersRepositoies';
 
 interface IShowCustomerRequest {
   id: number;

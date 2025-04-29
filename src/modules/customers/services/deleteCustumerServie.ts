@@ -1,4 +1,4 @@
-import { customersRepository } from '../database/repositories/custumersRepositoies';
+import { customersRepository } from '../database/entities/repositories/custumersRepositoies';
 
 interface IDeleteCustomerRequest {
   id: number;

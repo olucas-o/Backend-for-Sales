@@ -21,11 +21,11 @@ export class Product {
   quantity: number;
 
   @Column('jsonb', { nullable: true })
-  description: Record<string, any>;
+  description: string | null;
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn()
   created_at: Date;
 
-  @UpdateDateColumn({ type: 'timestamp' })
+  @UpdateDateColumn()
   updated_at: Date;
 }
