@@ -1,7 +1,7 @@
 import { customersRepository } from '../database/repositories/custumersRepositoies';
 
 interface IDeleteCustomerRequest {
-  id: number,
+  id: number;
 }
 
 export class DeleteCustomerService {
