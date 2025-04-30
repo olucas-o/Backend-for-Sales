@@ -28,7 +28,10 @@ export class npmConfigName1746037188127 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('orders_products', 'ordersProductsProducts');
+    await queryRunner.dropForeignKey(
+      'orders_products',
+      'ordersProductsProducts',
+    );
     await queryRunner.dropColumn('orders_products', 'productsId');
   }
 }

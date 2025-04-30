@@ -4,7 +4,9 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+import { OrderProduct } from '../../../orders/database/entities/OrderProducts';
 
 @Entity('products')
 export class Product {
@@ -28,4 +30,7 @@ export class Product {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToMany(() => OrderProduct, (orderProduct) => orderProduct.product)
+  order_products: OrderProduct[];
 }
