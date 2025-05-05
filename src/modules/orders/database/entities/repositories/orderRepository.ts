@@ -5,7 +5,13 @@ import { Order } from '../Orders';
 
 interface ICreateOrder {
   customer: Customer;
-  orderProducts: OrderProduct[];
+  products: ICreateOrderProducts[];
+}
+
+export interface ICreateOrderProducts {
+  productId: string;
+  quantity: number;
+  price: number;
 }
 
 export const orderRepository = AppDataSource.getRepository(Order).extend({
@@ -17,10 +23,10 @@ export const orderRepository = AppDataSource.getRepository(Order).extend({
 
     return order;
   },
-  async createOrder({ customer, orderProducts }: ICreateOrder): Promise<Order> {
+  async createOrder({ customer, products }: ICreateOrder): Promise<Order> {
     const order = this.create({
       customer,
-      order_products: orderProducts,
+      order_products: products,
     });
 
     await this.save(order);

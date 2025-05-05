@@ -21,6 +21,12 @@ export class OrderProduct {
   @Column()
   quantity: number;
 
+  @Column()
+  order_id: string;
+
+  @Column()
+  product_id: string;
+
   @CreateDateColumn()
   created_at: Date;
 
