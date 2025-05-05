@@ -22,28 +22,33 @@ export class CreateOrderService {
       throw new AppError('Nenhum produto encontrado com os IDs fornecidos');
     }
 
-    const existsProductsIDs = products.map(product => product.id);
+    const existsProductsIDs = products.map((product) => product.id);
     const checkInexistentProducts = products.filter(
-      product => !existsProductsIDs.includes(product.id)
+      (product) => !existsProductsIDs.includes(product.id),
     );
     if (checkInexistentProducts.length) {
-      throw new AppError( `Could not find products: ${checkInexistentProducts.join(', ')}`,409);
+      throw new AppError(
+        `Could not find products: ${checkInexistentProducts.join(', ')}`,
+        409,
+      );
     }
 
-    const serializedProducts = products.map(product => ({
+    const serializedProducts = products.map((product) => ({
       productId: product.id,
       quantity: product.quantity,
-      price: existingProducts.filter(p => p.id === product.id)[0].price,
+      price: existingProducts.filter((p) => p.id === product.id)[0].price,
     }));
     const order = await orderRepository.createOrder({
-      customer : customerExists,
-      products: serializedProducts
-    })
-    const {order_products} = order
+      customer: customerExists,
+      products: serializedProducts,
+    });
+    const { order_products } = order;
 
-    const updateProductQuantity = order_products.map(product => ({
+    const updateProductQuantity = order_products.map((product) => ({
       id: product.product_id,
-      quantity: existingProducts.filter(p => p.id === product.product_id)[0].quantity - product.quantity
+      quantity:
+        existingProducts.filter((p) => p.id === product.product_id)[0]
+          .quantity - product.quantity,
     }));
     await ProductsRepository.save(updateProductQuantity);
     return order;

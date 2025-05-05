@@ -1,5 +1,4 @@
 import { Customer } from '../../../../customers/database/entities/Customers';
-import { OrderProduct } from '../OrderProducts';
 import { AppDataSource } from '../../../../../shared/typeorm/data-source';
 import { Order } from '../Orders';
 
@@ -28,7 +27,6 @@ export const orderRepository = AppDataSource.getRepository(Order).extend({
       customer,
       order_products: products,
     });
-
     await this.save(order);
     return order;
   },
