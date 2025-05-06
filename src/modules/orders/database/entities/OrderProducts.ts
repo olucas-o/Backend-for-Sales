@@ -21,11 +21,12 @@ export class OrderProduct {
   @Column()
   quantity: number;
 
-  @Column()
-  order_id: string;
+  @ManyToOne(() => Order, (order) => order.order_products)
+  @JoinColumn({ name: 'ordersId' })
+  order: Order;
 
   @Column()
-  product_id: string;
+  productsId: number;
 
   @CreateDateColumn()
   created_at: Date;
@@ -33,11 +34,7 @@ export class OrderProduct {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @ManyToOne(() => Order, (order) => order.order_products)
-  @JoinColumn({ name: 'orderId' })
-  order: Order;
-
   @ManyToOne(() => Product, (product) => product.order_products)
-  @JoinColumn({ name: 'productId' })
+  @JoinColumn({ name: 'productsId' })
   product: Product;
 }

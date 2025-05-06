@@ -6,6 +6,7 @@ import avatarRouter from '../../../modules/users/routers/avatarRouter';
 import passwordRouter from '../../../modules/users/routers/passwordRouter';
 import profileRouter from '../../../modules/users/routers/profileRoutes';
 import CustomerRouter from '../../../modules/customers/routers/CustomerRoutes';
+import ordersRouter from '../../../modules/orders/routers/ordersRoutes';
 
 const router = Router();
 
@@ -20,5 +21,6 @@ router.use('/avatars', avatarRouter);
 router.use('/passwords', passwordRouter);
 router.use('/profiles', profileRouter);
 router.use('/customers', CustomerRouter);
+router.use('/orders', ordersRouter);
 
 export default router;

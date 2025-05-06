@@ -3,14 +3,14 @@ import { AppDataSource } from '../../../../../shared/typeorm/data-source';
 import { Product } from '../Product';
 
 interface IFindProducts {
-  id: string;
+  id: number;
 }
 
 export const ProductsRepository = AppDataSource.getRepository(Product).extend({
   async findByName(name: string): Promise<Product | null> {
     return this.findOneBy({ name });
   },
-  async findId(id: string): Promise<Product | null> {
+  async findId(id: number): Promise<Product | null> {
     return this.findOneBy({ id });
   },
   async findAllByIds(products: IFindProducts[]): Promise<Product[]> {

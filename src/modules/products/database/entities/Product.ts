@@ -10,8 +10,8 @@ import { OrderProduct } from '../../../orders/database/entities/OrderProducts';
 
 @Entity('products')
 export class Product {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column({ type: 'text' })
   name: string;

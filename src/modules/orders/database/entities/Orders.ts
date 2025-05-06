@@ -19,7 +19,7 @@ export class Order {
   @JoinColumn({ name: 'customerId' })
   customer: Customer;
 
-  @OneToMany(() => OrderProduct, (order_product) => order_product.order, {
+  @OneToMany(() => OrderProduct, (order_products) => order_products.order, {
     cascade: true,
   })
   order_products: OrderProduct[];
