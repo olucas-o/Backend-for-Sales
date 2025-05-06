@@ -26,9 +26,9 @@ export class CreateOrderService {
     const checkInexistentProducts = products.filter(
       (product) => !existsProductsIDs.includes(product.id),
     );
-    if (checkInexistentProducts.length) {
+    if (!checkInexistentProducts.length) {
       throw new AppError(
-        `Could not find products: ${checkInexistentProducts.join(', ')}`,
+        `This quantity of products is not available`,
         409,
       );
     }
