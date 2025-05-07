@@ -1,4 +1,4 @@
-import { ListCustomersService } from '../services/listCustumersService';
+import  ListCustomersService from '../services/listCustumersService';
 import { ShowCustomerService } from '../services/showCustomersService';
 import { CreateCustomerService } from '../services/createCustomersService';
 import { UpdateCustomerService } from '../services/updateCustomersService';
@@ -7,8 +7,10 @@ import { Request, Response } from 'express';
 
 export default class CustomerControllers {
   async index(request: Request, response: Response): Promise<void> {
-    const listCustomerService = new ListCustomersService();
-    const customers = await listCustomerService.execute();
+      const page = parseInt(request.query.page as string) || 1;
+      const limit = parseInt(request.query.limit as string) || 10;
+    const listCustomerService = new ListCustomersService();;
+    const customers = await listCustomerService.execute(page, limit);
     response.json(customers);
   }
 
