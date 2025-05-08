@@ -27,10 +27,7 @@ export class CreateOrderService {
       (product) => !existsProductsIDs.includes(product.id),
     );
     if (!checkInexistentProducts.length) {
-      throw new AppError(
-        `This quantity of products is not available`,
-        409,
-      );
+      throw new AppError(`This quantity of products is not available`, 409);
     }
 
     const serializedProducts = products.map((product) => ({
