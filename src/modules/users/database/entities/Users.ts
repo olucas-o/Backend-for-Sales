@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -18,6 +19,7 @@ export class Users {
   email: string;
 
   @Column({ type: 'text' })
+  @Exclude()
   password: string;
 
   @Column('jsonb', { nullable: true })
