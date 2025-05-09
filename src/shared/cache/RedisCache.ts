@@ -21,4 +21,8 @@ export class RedisCache {
     const parsedData = JSON.parse(data) as T;
     return parsedData;
   }
+
+  public async invalidade(key: string): Promise<void>{
+    await this.client.del(key)
+  }
 }

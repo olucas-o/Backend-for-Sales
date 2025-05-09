@@ -1,8 +1,9 @@
+import { RedisCache } from '../../../shared/cache/RedisCache';
 import AppError from '../../../shared/erros/AppError';
 import { ProductsRepository } from '../database/entities/Repositiries/ProductsRepository';
 
 interface IDeleteProduct {
-  id: string;
+  id: number;
 }
 export default class DeleteProductService {
   async execute({ id }: IDeleteProduct): Promise<void> {
@@ -13,5 +14,8 @@ export default class DeleteProductService {
     }
 
     await ProductsRepository.remove(product);
+
+    const redisCache = new RedisCache()
+    await redisCache.invalidade('API_MY_SALES_PRODUCT_LIST');
   }
 }
