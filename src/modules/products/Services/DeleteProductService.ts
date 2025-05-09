@@ -15,7 +15,7 @@ export default class DeleteProductService {
 
     await ProductsRepository.remove(product);
 
-    const redisCache = new RedisCache()
+    const redisCache = new RedisCache();
     await redisCache.invalidade('API_MY_SALES_PRODUCT_LIST');
   }
 }

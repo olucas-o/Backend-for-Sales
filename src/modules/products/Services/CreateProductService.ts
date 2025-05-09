@@ -29,7 +29,7 @@ export default class CreateProductService {
 
     await ProductsRepository.save(product);
 
-    const redisCache = new RedisCache()
+    const redisCache = new RedisCache();
     await redisCache.invalidade('API_MY_SALES_PRODUCT_LIST');
 
     return product;

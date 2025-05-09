@@ -22,7 +22,7 @@ export class RedisCache {
     return parsedData;
   }
 
-  public async invalidade(key: string): Promise<void>{
-    await this.client.del(key)
+  public async invalidade(key: string): Promise<void> {
+    await this.client.del(key);
   }
 }
