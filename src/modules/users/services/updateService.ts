@@ -1,6 +1,6 @@
-import { Users } from '../database/entities/Users';
-import { UsersRepository } from '../database/entities/repositories/userRepositorie';
 import bcrpty from 'bcrypt';
+import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
+import { Users } from '../infra/database/entities/Users';
 
 interface IUpdateUser {
   id: number;

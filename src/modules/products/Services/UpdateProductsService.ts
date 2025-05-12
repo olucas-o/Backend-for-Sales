@@ -1,9 +1,9 @@
 import { RedisCache } from '../../../shared/cache/RedisCache';
-import { Product } from '../database/entities/Product';
-import { ProductsRepository } from '../database/entities/Repositiries/ProductsRepository';
+import { Product } from '../infra/database/entities/Product';
+import { ProductsRepository } from '../infra/database/entities/Repositiries/ProductsRepository';
 
 interface IUpdateProduct {
-  id: number;
+  id: string;
   name: string;
   price: number;
   quantity: number;
@@ -15,14 +15,14 @@ export default class UpdateProductService {
     price,
     quantity,
   }: IUpdateProduct): Promise<Product> {
-    const productExists = await ProductsRepository.findId(id);
+    const productExists = await ProductsRepository.findId(Number(id));
     if (!productExists) {
       throw new Error('Product not found.');
     }
 
     if (name) {
       const productWithSameName = await ProductsRepository.findByName(name);
-      if (productWithSameName && productWithSameName.id !== id) {
+      if (productWithSameName && productWithSameName.id !== Number(id)) {
         throw new Error('Already has a Product with this name');
       }
     }

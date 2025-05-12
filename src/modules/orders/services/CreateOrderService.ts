@@ -1,9 +1,9 @@
 import AppError from '../../../shared/erros/AppError';
-import { customersRepository } from '../../customers/database/entities/repositories/custumersRepositoies';
-import { Product } from '../../products/database/entities/Product';
-import { ProductsRepository } from '../../products/database/entities/Repositiries/ProductsRepository';
-import { Order } from '../database/entities/Orders';
-import { orderRepository } from '../database/entities/repositories/orderRepository';
+import { customersRepository } from '../../customers/infra/database/entities/repositories/custumersRepositoies';
+import { Product } from '../../products/infra/database/entities/Product';
+import { ProductsRepository } from '../../products/infra/database/entities/Repositiries/ProductsRepository';
+import { Order } from '../infra/database/entities/Orders';
+import { orderRepository } from '../infra/database/entities/repositories/orderRepository';
 
 interface CreateOrderRequest {
   customerId: string;

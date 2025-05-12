@@ -1,7 +1,7 @@
 import { sendEmail } from '../../../config/email';
 import AppError from '../../../shared/erros/AppError';
-import { UsersRepository } from '../database/entities/repositories/userRepositorie';
-import { UserTokensRepositories } from '../database/entities/repositories/UserTokensRepositories';
+import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
+import { UserTokensRepositories } from '../infra/database/entities/repositories/UserTokensRepositories';
 
 interface IForgotPassword {
   email: string;

@@ -1,5 +1,5 @@
-import { Users } from '../database/entities/Users';
-import { UsersRepository } from '../database/entities/repositories/userRepositorie';
+import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
+import { Users } from '../infra/database/entities/Users';
 
 export default class ListUsersService {
   async execute(): Promise<Users[]> {

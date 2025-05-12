@@ -1,7 +1,7 @@
 import { addHours, isAfter } from 'date-fns';
 import { hash } from 'bcrypt';
-import { UsersRepository } from '../database/entities/repositories/userRepositorie';
-import { UserTokensRepositories } from '../database/entities/repositories/UserTokensRepositories';
+import { UserTokensRepositories } from '../infra/database/entities/repositories/UserTokensRepositories';
+import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
 
 interface IResetPasswordData {
   token: string;

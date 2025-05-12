@@ -1,9 +1,9 @@
 import path from 'path';
-import { UsersRepository } from '../database/entities/repositories/userRepositorie';
 import AppError from '../../../shared/erros/AppError';
-import { Users } from '../database/entities/Users';
 import fs from 'fs';
 import uploadConfig from '../../../config/upload';
+import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
+import { Users } from '../infra/database/entities/Users';
 
 interface IUpdateUserAvatar {
   userId: number;

@@ -1,6 +1,6 @@
 import AppError from '../../../shared/erros/AppError';
-import { UsersRepository } from '../database/entities/repositories/userRepositorie';
-import { Users } from '../database/entities/Users';
+import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
+import { Users } from '../infra/database/entities/Users';
 
 interface IShowProfileRequest {
   userId: number;

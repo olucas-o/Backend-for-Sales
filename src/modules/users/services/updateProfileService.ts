@@ -1,6 +1,6 @@
 import { compare, hash } from 'bcrypt';
-import { UsersRepository } from '../database/entities/repositories/userRepositorie';
-import { Users } from '../database/entities/Users';
+import { Users } from '../infra/database/entities/Users';
+import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
 
 interface IUpdateProfile {
   User_ID: number;

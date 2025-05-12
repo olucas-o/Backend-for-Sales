@@ -1,6 +1,6 @@
 import { RedisCache } from '../../../shared/cache/RedisCache';
-import { Product } from '../database/entities/Product';
-import { ProductsRepository } from '../database/entities/Repositiries/ProductsRepository';
+import { Product } from '../infra/database/entities/Product';
+import { ProductsRepository } from '../infra/database/entities/Repositiries/ProductsRepository';
 
 export default class ListProductService {
   async execute(): Promise<Product[]> {
