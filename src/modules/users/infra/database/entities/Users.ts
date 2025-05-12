@@ -6,9 +6,10 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { IUsers } from '../../../domains/models/IUsers';
 
 @Entity('users')
-export class Users {
+export class Users implements IUsers {
   @PrimaryGeneratedColumn()
   id: number;
 

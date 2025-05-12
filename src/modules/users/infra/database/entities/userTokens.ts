@@ -6,8 +6,10 @@ import {
   UpdateDateColumn,
   Generated,
 } from 'typeorm';
+import { IUserTokens } from '../../../domains/models/IUserToken';
+
 @Entity('user_tokens')
-export class UserTokens {
+export class UserTokens implements IUserTokens {
   @PrimaryGeneratedColumn('increment')
   id: number;
 

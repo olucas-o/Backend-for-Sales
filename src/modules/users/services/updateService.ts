@@ -1,13 +1,8 @@
 import bcrpty from 'bcrypt';
 import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
 import { Users } from '../infra/database/entities/Users';
+import { IUpdateUser } from '../domains/models/IUpdateUser';
 
-interface IUpdateUser {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-}
 export default class UpdateUserService {
   async execute({ id, name, email, password }: IUpdateUser): Promise<Users> {
     const userExists = await UsersRepository.findId(id);

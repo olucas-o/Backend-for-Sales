@@ -7,9 +7,10 @@ import {
   OneToMany,
 } from 'typeorm';
 import { OrderProduct } from '../../../../orders/infra/database/entities/OrderProducts';
+import { IProduct } from '../../../domains/models/IProduct';
 
 @Entity('products')
-export class Product {
+export class Product implements IProduct{
   @PrimaryGeneratedColumn()
   id: number;
 

@@ -1,18 +1,14 @@
+import { IUpdateCustomer } from '../domains/models/IUpdateCustomer';
 import { Customer } from '../infra/database/entities/Customers';
 import { customersRepository } from '../infra/database/entities/repositories/custumersRepositoies';
 
-interface IUpdateCustomerRequest {
-  id: number;
-  name: string;
-  email: string;
-}
 
 export class UpdateCustomerService {
   async execute({
     id,
     name,
     email,
-  }: IUpdateCustomerRequest): Promise<Customer> {
+  }: IUpdateCustomer): Promise<Customer> {
     const customer = await customersRepository.findId(id);
 
     if (!customer) {

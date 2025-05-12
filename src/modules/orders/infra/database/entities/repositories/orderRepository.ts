@@ -1,5 +1,5 @@
-import { Customer } from '../../../../customers/database/entities/Customers';
 import { AppDataSource } from '../../../../../../shared/infra/typeorm/data-source';
+import { Customer } from '../../../../../customers/infra/database/entities/Customers';
 import { Order } from '../Orders';
 
 interface ICreateOrder {

@@ -7,11 +7,12 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Customer } from '../../../customers/database/entities/Customers';
 import { OrderProduct } from './OrderProducts';
+import { Customer } from '../../../../customers/infra/database/entities/Customers';
+import { IOrder } from '../../../domains/models/IOrder';
 
 @Entity('orders')
-export class Order {
+export class Order implements IOrder {
   @PrimaryGeneratedColumn()
   id: number;
 

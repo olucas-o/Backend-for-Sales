@@ -1,13 +1,8 @@
 import { RedisCache } from '../../../shared/cache/RedisCache';
+import { IUpdateProduct } from '../domains/models/IUpdateProduct';
 import { Product } from '../infra/database/entities/Product';
 import { ProductsRepository } from '../infra/database/entities/Repositiries/ProductsRepository';
 
-interface IUpdateProduct {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
 export default class UpdateProductService {
   async execute({
     id,

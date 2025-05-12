@@ -1,13 +1,11 @@
+import { ICreateCustomer } from '../domains/models/ICreateUser';
 import { Customer } from '../infra/database/entities/Customers';
 import { customersRepository } from '../infra/database/entities/repositories/custumersRepositoies';
 
-interface ICreateCustomerRequest {
-  name: string;
-  email: string;
-}
+
 
 export class CreateCustomerService {
-  async execute({ name, email }: ICreateCustomerRequest): Promise<Customer> {
+  async execute({ name, email }: ICreateCustomer): Promise<Customer> {
     const emailExists = await customersRepository.findByEmail(email);
 
     if (emailExists) {
