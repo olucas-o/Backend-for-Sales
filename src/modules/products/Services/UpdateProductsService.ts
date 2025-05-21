@@ -6,7 +6,10 @@ import { IProductsRepository } from '../domains/repositories/IProductsRepository
 
 @injectable()
 export default class UpdateProductService {
-  constructor(@inject('ProductsRepository')private readonly ProductsRepository: IProductsRepository) {}
+  constructor(
+    @inject('ProductsRepository')
+    private readonly ProductsRepository: IProductsRepository,
+  ) {}
   async execute({
     id,
     name,

@@ -6,7 +6,10 @@ import { Product } from '../infra/database/entities/Product';
 
 @injectable()
 export default class ListProductService {
-  constructor(@inject('ProductsRepository')private readonly ProductsRepository: IProductsRepository) {}
+  constructor(
+    @inject('ProductsRepository')
+    private readonly ProductsRepository: IProductsRepository,
+  ) {}
   async execute(
     page: number = 1,
     limit: number = 10,

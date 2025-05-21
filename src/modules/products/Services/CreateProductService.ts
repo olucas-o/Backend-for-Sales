@@ -6,7 +6,10 @@ import { Product } from '../infra/database/entities/Product';
 
 @injectable()
 export default class CreateProductService {
-  constructor(@inject('ProductsRepository')private readonly ProductsRepository: IProductsRepository) {}
+  constructor(
+    @inject('ProductsRepository')
+    private readonly ProductsRepository: IProductsRepository,
+  ) {}
   public async execute({
     name,
     price,

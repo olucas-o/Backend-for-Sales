@@ -1,7 +1,10 @@
 import { In, Repository } from 'typeorm';
 import { AppDataSource } from '../../../../../shared/infra/typeorm/data-source';
 import { Product } from '../entities/Product';
-import { IProductsRepository, Pagination } from '../../../domains/repositories/IProductsRepository';
+import {
+  IProductsRepository,
+  Pagination,
+} from '../../../domains/repositories/IProductsRepository';
 import { ICreateProduct } from '../../../domains/models/ICreateProduct';
 import { IProduct } from '../../../domains/models/IProduct';
 
@@ -31,16 +34,11 @@ export default class ProductsRepository implements IProductsRepository {
 
     return existingProducts;
   }
-  async create({
-      name,
-      price,
-      quantity,
-    }: ICreateProduct): Promise<Product> {
-      const product = this.ormRepository.create({ name, price,
-      quantity, });
-      await this.ormRepository.save(product);
-      return product;
-    }
+  async create({ name, price, quantity }: ICreateProduct): Promise<Product> {
+    const product = this.ormRepository.create({ name, price, quantity });
+    await this.ormRepository.save(product);
+    return product;
+  }
   async save(product: IProduct): Promise<IProduct> {
     const saveproduct = await this.ormRepository.save(product);
     return saveproduct;
@@ -48,11 +46,14 @@ export default class ProductsRepository implements IProductsRepository {
   async remove(product: Product): Promise<void> {
     await this.ormRepository.remove(product);
   }
-  async findAndCount({take,skip}: Pagination): Promise<[IProduct[], number]> {
+  async findAndCount({
+    take,
+    skip,
+  }: Pagination): Promise<[IProduct[], number]> {
     const [product, total] = await this.ormRepository.findAndCount({
       take,
       skip,
     });
     return [product, total];
   }
-  }
+}

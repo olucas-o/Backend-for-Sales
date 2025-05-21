@@ -9,7 +9,10 @@ interface IShowProduct {
 
 @injectable()
 export default class ShowProductService {
-  constructor(@inject('ProductsRepository') private readonly ProductsRepository: IProductsRepository) {}
+  constructor(
+    @inject('ProductsRepository')
+    private readonly ProductsRepository: IProductsRepository,
+  ) {}
   async execute({ id }: IShowProduct): Promise<Product> {
     const product = await this.ProductsRepository.findId(Number(id));
     if (!product) {

@@ -11,14 +11,14 @@ export default class ProductsController {
     const page = parseInt(request.query.page as string) || 1;
     const limit = parseInt(request.query.limit as string) || 10;
     const listProductsService = container.resolve(ListProductService);
-    const products = await listProductsService.execute(page,limit);
+    const products = await listProductsService.execute(page, limit);
     response.json(products);
   }
 
   public async show(request: Request, response: Response): Promise<void> {
     const { id } = request.params;
     const showProductService = container.resolve(ShowProductService);
-    const product = await showProductService.execute( {id} );
+    const product = await showProductService.execute({ id });
     response.json(product);
   }
 

@@ -9,7 +9,10 @@ interface IDeleteProduct {
 
 @injectable()
 export default class DeleteProductService {
-  constructor(@inject('ProductsRepository')private readonly ProductsRepository: IProductsRepository) {}
+  constructor(
+    @inject('ProductsRepository')
+    private readonly ProductsRepository: IProductsRepository,
+  ) {}
   async execute({ id }: IDeleteProduct): Promise<void> {
     const product = await this.ProductsRepository.findId(Number(id));
 
