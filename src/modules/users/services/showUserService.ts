@@ -1,5 +1,5 @@
 import AppError from '../../../shared/erros/AppError';
-import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
+import { UsersRepository } from '../infra/database/repositories/userRepositorie';
 import { Users } from '../infra/database/entities/Users';
 
 interface IShowUser {

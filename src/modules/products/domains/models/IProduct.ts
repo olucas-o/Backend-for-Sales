@@ -1,4 +1,4 @@
-import { OrderProduct } from "../../../orders/infra/database/entities/OrderProducts";
+import { OrderProduct } from '../../../orders/infra/database/entities/OrderProducts';
 
 export interface IProduct {
   id: number;

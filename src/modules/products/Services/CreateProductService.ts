@@ -4,7 +4,6 @@ import { ICreateProduct } from '../domains/models/ICreateProduct';
 import { Product } from '../infra/database/entities/Product';
 import { ProductsRepository } from '../infra/database/entities/Repositiries/ProductsRepository';
 
-
 export default class CreateProductService {
   public async execute({
     name,

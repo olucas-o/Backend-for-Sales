@@ -1,10 +1,9 @@
 import AppError from '../../../shared/erros/AppError';
-import { customersRepository } from '../../customers/infra/database/entities/repositories/custumersRepositoies';
+import { customersRepository } from '../../customers/infra/database/repositories/custumersRepositoies';
 import { ProductsRepository } from '../../products/infra/database/entities/Repositiries/ProductsRepository';
 import { ICreateOrder } from '../domains/models/CreateOrder';
 import { Order } from '../infra/database/entities/Orders';
 import { orderRepository } from '../infra/database/entities/repositories/orderRepository';
-
 
 export class CreateOrderService {
   async execute({ customerId, products }: ICreateOrder): Promise<Order> {

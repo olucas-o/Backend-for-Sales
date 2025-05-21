@@ -1,7 +1,7 @@
 import AppError from '../../../shared/erros/AppError';
 import bcrypt from 'bcrypt';
 import { Users } from '../infra/database/entities/Users';
-import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
+import { UsersRepository } from '../infra/database/repositories/userRepositorie';
 import { ICreateUser } from '../domains/models/ICreateUser';
 
 export default class CreateUserService {

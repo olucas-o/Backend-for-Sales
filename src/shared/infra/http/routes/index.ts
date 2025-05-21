@@ -5,8 +5,8 @@ import sessionRouter from '../../../../modules/users/infra/http/routers/sessionR
 import avatarRouter from '../../../../modules/users/infra/http/routers/avatarRouter';
 import passwordRouter from '../../../../modules/users/infra/http/routers/passwordRouter';
 import profileRouter from '../../../../modules/users/infra/http/routers/profileRoutes';
-import CustomerRouter from '../../../../modules/customers/routers/CustomerRoutes';
-import ordersRouter from '../../../../modules/orders/routers/ordersRoutes';
+import CustomerRouter from '../../../../modules/customers/infra/http/routers/CustomerRoutes';
+import ordersRouter from '../../../../modules/orders/infra/http/routers/ordersRoutes';
 
 const router = Router();
 

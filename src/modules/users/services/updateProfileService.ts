@@ -1,6 +1,6 @@
 import { compare, hash } from 'bcrypt';
 import { Users } from '../infra/database/entities/Users';
-import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
+import { UsersRepository } from '../infra/database/repositories/userRepositorie';
 import { IUpdateProfile } from '../domains/models/IUpdateProfile';
 
 export default class UpdateProfileService {

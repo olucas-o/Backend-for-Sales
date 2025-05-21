@@ -1,6 +1,6 @@
 import express from 'express';
 import CustomerControllers from '../controller/CustomerControllers';
-import authMiddleware from '../../../shared/middleware/authMiddleware';
+import AuthMiddleware from '../../../../../shared/middleware/authMiddleware';
 import {
   CreateCustomerSchema,
   idParamsValidateCustomers,
@@ -10,7 +10,7 @@ import {
 const controller = new CustomerControllers();
 const CustomerRouter = express.Router();
 
-CustomerRouter.use(authMiddleware.execute);
+CustomerRouter.use(AuthMiddleware.execute);
 CustomerRouter.get('/', controller.index);
 CustomerRouter.get('/:id', idParamsValidateCustomers, controller.show);
 CustomerRouter.post('/', CreateCustomerSchema, controller.create);

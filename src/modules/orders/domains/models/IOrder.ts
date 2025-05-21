@@ -1,7 +1,7 @@
-import { Customer } from "../../../customers/infra/database/entities/Customers";
-import { OrderProduct } from "../../infra/database/entities/OrderProducts";
+import { Customer } from '../../../customers/infra/database/entities/Customers';
+import { OrderProduct } from '../../infra/database/entities/OrderProducts';
 
-export interface IOrder{
+export interface IOrder {
   id: number;
   customer: Customer;
   order_products: OrderProduct[];

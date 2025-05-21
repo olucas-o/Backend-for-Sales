@@ -1,5 +1,5 @@
 import bcrpty from 'bcrypt';
-import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
+import { UsersRepository } from '../infra/database/repositories/userRepositorie';
 import { Users } from '../infra/database/entities/Users';
 import { IUpdateUser } from '../domains/models/IUpdateUser';
 

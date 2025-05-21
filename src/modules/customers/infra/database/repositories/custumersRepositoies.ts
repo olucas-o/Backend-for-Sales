@@ -1,5 +1,5 @@
-import { AppDataSource } from '../../../../../../shared/infra/typeorm/data-source';
-import { Customer } from '../Customers';
+import { AppDataSource } from '../../../../../shared/infra/typeorm/data-source';
+import { Customer } from '../entities/Customers';
 
 export const customersRepository = AppDataSource.getRepository(Customer).extend(
   {

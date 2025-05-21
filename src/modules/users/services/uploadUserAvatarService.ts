@@ -2,7 +2,7 @@ import path from 'path';
 import AppError from '../../../shared/erros/AppError';
 import fs from 'fs';
 import uploadConfig from '../../../config/upload';
-import { UsersRepository } from '../infra/database/entities/repositories/userRepositorie';
+import { UsersRepository } from '../infra/database/repositories/userRepositorie';
 import { Users } from '../infra/database/entities/Users';
 
 interface IUpdateUserAvatar {

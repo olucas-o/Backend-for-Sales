@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import { celebrate } from 'celebrate';
-import OrderControllers from '../infra/http/controller/orderController';
 import {
   createOrderValidate,
   idParamsValidate,
 } from '../schemas/ordersSchemas';
-import authMiddleware from '../../../shared/middleware/authMiddleware';
+import OrderControllers from '../controller/orderController';
+import authMiddleware from '../../../../../shared/middleware/authMiddleware';
 
 const ordersRouter = Router();
 const orderController = new OrderControllers();

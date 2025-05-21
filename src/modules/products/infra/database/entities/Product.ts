@@ -10,7 +10,7 @@ import { OrderProduct } from '../../../../orders/infra/database/entities/OrderPr
 import { IProduct } from '../../../domains/models/IProduct';
 
 @Entity('products')
-export class Product implements IProduct{
+export class Product implements IProduct {
   @PrimaryGeneratedColumn()
   id: number;
 
