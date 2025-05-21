@@ -3,7 +3,7 @@ import cors from 'cors';
 import 'reflect-metadata';
 import 'express-async-errors';
 import { errors } from 'celebrate';
-import '../../conteiners/container'
+import '../../conteiners/container';
 
 import ErrorHandlerMiddleware from '../../middleware/ErrorHandlerMiddleware';
 import { AppDataSource } from '../typeorm/data-source';

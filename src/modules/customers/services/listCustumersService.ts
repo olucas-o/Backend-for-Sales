@@ -5,7 +5,10 @@ import { Customer } from '../infra/database/entities/Customers';
 
 @injectable()
 export default class ListCustomerService {
-  constructor(@inject('CustomersRepository') private readonly customersRepository: ICustomersRepository) {}
+  constructor(
+    @inject('CustomersRepository')
+    private readonly customersRepository: ICustomersRepository,
+  ) {}
   async execute(
     page: number = 1,
     limit: number = 10,

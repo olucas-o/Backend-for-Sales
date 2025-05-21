@@ -7,7 +7,7 @@ import { Customer } from '../infra/database/entities/Customers';
 export class CreateCustomerService {
   constructor(
     @inject('CustomersRepository')
-    private readonly customersRepository: ICustomersRepository
+    private readonly customersRepository: ICustomersRepository,
   ) {}
 
   public async execute({ name, email }: ICreateCustomer): Promise<Customer> {

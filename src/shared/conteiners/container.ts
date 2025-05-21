@@ -4,5 +4,11 @@ import customersRepository from '../../modules/customers/infra/database/reposito
 import { IOrderRepository } from '../../modules/orders/domains/repositories/IOrderRpository';
 import ordersRepository from '../../modules/orders/infra/database/entities/repositories/orderRepository';
 
-container.registerSingleton<ICustomersRepository>( 'CustomersRepository', customersRepository);
-container.registerSingleton<IOrderRepository>('OrderRepository', ordersRepository)
+container.registerSingleton<ICustomersRepository>(
+  'CustomersRepository',
+  customersRepository,
+);
+container.registerSingleton<IOrderRepository>(
+  'OrderRepository',
+  ordersRepository,
+);

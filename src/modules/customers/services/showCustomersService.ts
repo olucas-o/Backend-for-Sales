@@ -7,7 +7,10 @@ interface IShowCustomerRequest {
 
 @injectable()
 export class ShowCustomerService {
-  constructor(@inject('CustomersRepository') private readonly customersRepository: ICustomersRepository) {}
+  constructor(
+    @inject('CustomersRepository')
+    private readonly customersRepository: ICustomersRepository,
+  ) {}
 
   async execute({ id }: IShowCustomerRequest): Promise<Customer> {
     const customer = await this.customersRepository.findId(id);

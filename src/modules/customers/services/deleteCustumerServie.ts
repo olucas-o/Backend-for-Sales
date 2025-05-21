@@ -7,7 +7,10 @@ interface IDeleteCustomerRequest {
 
 @injectable()
 export class DeleteCustomerService {
-  constructor(@inject('CustomersRepository') private readonly customersRepository: ICustomersRepository) {}
+  constructor(
+    @inject('CustomersRepository')
+    private readonly customersRepository: ICustomersRepository,
+  ) {}
 
   async execute({ id }: IDeleteCustomerRequest): Promise<void> {
     const customer = await this.customersRepository.findId(id);

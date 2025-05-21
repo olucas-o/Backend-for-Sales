@@ -9,11 +9,15 @@ import { ICustomersRepository } from '../../customers/domains/repositories/ICust
 @injectable()
 export class CreateOrderService {
   constructor(
-    @inject('OrderRepository')private readonly orderRepository: IOrderRepository,
-    @inject('CustomersRepository') private readonly customersRepository: ICustomersRepository
-  ){}
+    @inject('OrderRepository')
+    private readonly orderRepository: IOrderRepository,
+    @inject('CustomersRepository')
+    private readonly customersRepository: ICustomersRepository,
+  ) {}
   async execute({ customerId, products }: ICreateOrder): Promise<Order> {
-    const customerExists = await this.customersRepository.findId(Number(customerId));
+    const customerExists = await this.customersRepository.findId(
+      Number(customerId),
+    );
     if (!customerExists) {
       throw new AppError('Cliente não encontrado com este ID');
     }

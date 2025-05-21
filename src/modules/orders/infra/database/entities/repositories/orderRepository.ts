@@ -18,7 +18,9 @@ export interface ICreateOrderProducts {
 
 export default class ordersRepository implements IOrderRepository {
   private ormRepository: Repository<Order>;
-  constructor(){this.ormRepository = AppDataSource.getRepository(Order)}
+  constructor() {
+    this.ormRepository = AppDataSource.getRepository(Order);
+  }
   async createOrder({ customer, products }: ICreateOrder): Promise<Order> {
     const order = this.ormRepository.create({
       customer,
@@ -35,10 +37,10 @@ export default class ordersRepository implements IOrderRepository {
     return order;
   }
   async remove(order: IOrder): Promise<void> {
-    await this.ormRepository.remove(order)
+    await this.ormRepository.remove(order);
   }
   async save(order: IOrder): Promise<IOrder> {
-    const saveorder= await this.ormRepository.save(order)
-    return saveorder
+    const saveorder = await this.ormRepository.save(order);
+    return saveorder;
   }
 }

@@ -5,7 +5,10 @@ import { Order } from '../infra/database/entities/Orders';
 
 @injectable()
 export class ShowOrderService {
-  constructor(@inject('OrderRepository') private readonly orderRepository: IOrderRepository) {}
+  constructor(
+    @inject('OrderRepository')
+    private readonly orderRepository: IOrderRepository,
+  ) {}
   public async execute(id: string): Promise<Order> {
     const order = await this.orderRepository.findById(Number(id));
 

@@ -5,7 +5,10 @@ import { Customer } from '../infra/database/entities/Customers';
 
 @injectable()
 export class UpdateCustomerService {
-  constructor(@inject('CustomersRepository')private readonly customersRepository: ICustomersRepository) {}
+  constructor(
+    @inject('CustomersRepository')
+    private readonly customersRepository: ICustomersRepository,
+  ) {}
 
   async execute({ id, name, email }: IUpdateCustomer): Promise<Customer> {
     const customer = await this.customersRepository.findId(id);
