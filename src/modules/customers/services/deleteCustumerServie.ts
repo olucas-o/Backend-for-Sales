@@ -1,11 +1,13 @@
+import { inject, injectable } from 'tsyringe';
 import { ICustomersRepository } from '../domains/repositories/ICustumerRepository';
 
 interface IDeleteCustomerRequest {
   id: number;
 }
 
+@injectable()
 export class DeleteCustomerService {
-  constructor(private readonly customersRepository: ICustomersRepository) {}
+  constructor(@inject('CustomersRepository') private readonly customersRepository: ICustomersRepository) {}
 
   async execute({ id }: IDeleteCustomerRequest): Promise<void> {
     const customer = await this.customersRepository.findId(id);

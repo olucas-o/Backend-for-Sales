@@ -1,11 +1,13 @@
+import { inject, injectable } from 'tsyringe';
 import { ICustomersRepository } from '../domains/repositories/ICustumerRepository';
 import { Customer } from '../infra/database/entities/Customers';
 interface IShowCustomerRequest {
   id: number;
 }
 
+@injectable()
 export class ShowCustomerService {
-  constructor(private readonly customersRepository: ICustomersRepository) {}
+  constructor(@inject('CustomersRepository') private readonly customersRepository: ICustomersRepository) {}
 
   async execute({ id }: IShowCustomerRequest): Promise<Customer> {
     const customer = await this.customersRepository.findId(id);

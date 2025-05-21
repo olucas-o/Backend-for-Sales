@@ -1,14 +1,19 @@
+import { inject, injectable } from 'tsyringe';
 import AppError from '../../../shared/erros/AppError';
-import { customersRepository } from '../../customers/infra/database/repositories/custumersRepositoies';
 import { ProductsRepository } from '../../products/infra/database/entities/Repositiries/ProductsRepository';
 import { ICreateOrder } from '../domains/models/CreateOrder';
 import { IOrderRepository } from '../domains/repositories/IOrderRpository';
 import { Order } from '../infra/database/entities/Orders';
+import { ICustomersRepository } from '../../customers/domains/repositories/ICustumerRepository';
 
+@injectable()
 export class CreateOrderService {
-  constructor(private readonly orderRepository: IOrderRepository) {}
+  constructor(
+    @inject('OrderRepository')private readonly orderRepository: IOrderRepository,
+    @inject('CustomersRepository') private readonly customersRepository: ICustomersRepository
+  ){}
   async execute({ customerId, products }: ICreateOrder): Promise<Order> {
-    const customerExists = await customersRepository.findId(Number(customerId));
+    const customerExists = await this.customersRepository.findId(Number(customerId));
     if (!customerExists) {
       throw new AppError('Cliente não encontrado com este ID');
     }
