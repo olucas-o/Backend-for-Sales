@@ -2,7 +2,7 @@ import { AppDataSource } from '../../../../../../shared/infra/typeorm/data-sourc
 import { Customer } from '../../../../../customers/infra/database/entities/Customers';
 import { Order } from '../Orders';
 
-interface ICreateOrder {
+export interface ICreateOrder {
   customer: Customer;
   products: ICreateOrderProducts[];
 }

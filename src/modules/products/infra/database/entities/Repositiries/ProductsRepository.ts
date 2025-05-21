@@ -2,7 +2,7 @@ import { In } from 'typeorm';
 import { AppDataSource } from '../../../../../../shared/infra/typeorm/data-source';
 import { Product } from '../Product';
 
-interface IFindProducts {
+export interface IFindProducts {
   id: number;
 }
 

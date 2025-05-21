@@ -2,10 +2,11 @@ import AppError from '../../../shared/erros/AppError';
 import { customersRepository } from '../../customers/infra/database/repositories/custumersRepositoies';
 import { ProductsRepository } from '../../products/infra/database/entities/Repositiries/ProductsRepository';
 import { ICreateOrder } from '../domains/models/CreateOrder';
+import { IOrderRepository } from '../domains/repositories/IOrderRpository';
 import { Order } from '../infra/database/entities/Orders';
-import { orderRepository } from '../infra/database/entities/repositories/orderRepository';
 
 export class CreateOrderService {
+  constructor(private readonly orderRepository: IOrderRepository) {}
   async execute({ customerId, products }: ICreateOrder): Promise<Order> {
     const customerExists = await customersRepository.findId(Number(customerId));
     if (!customerExists) {
@@ -30,7 +31,7 @@ export class CreateOrderService {
       quantity: product.quantity,
       price: existingProducts.filter((p) => p.id === product.id)[0].price,
     }));
-    const order = await orderRepository.createOrder({
+    const order = await this.orderRepository.createOrder({
       customer: customerExists,
       products: serializedProducts,
     });
