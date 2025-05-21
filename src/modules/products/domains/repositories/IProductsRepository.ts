@@ -1,5 +1,5 @@
 import { Product } from '../../infra/database/entities/Product';
-import { IFindProducts } from '../../infra/database/entities/Repositiries/ProductsRepository';
+import { IFindProducts } from '../../infra/database/Repositiries/ProductsRepository';
 import { ICreateProduct } from '../models/ICreateProduct';
 import { IProduct } from '../models/IProduct';
 
@@ -14,6 +14,6 @@ export interface IProductsRepository {
   findAllByIds(products: IFindProducts[]): Promise<Product[]>;
   create(data: ICreateProduct): Promise<Product>;
   save(product: IProduct): Promise<IProduct>;
-  remove(product: IProduct): Promise<IProduct>;
+  remove(product: Product): Promise<void>;
   findAndCount(pagination: Pagination): Promise<[IProduct[], number]>;
 }

@@ -1,10 +1,12 @@
+import { inject, injectable } from 'tsyringe';
 import AppError from '../../../shared/erros/AppError';
 import { ICreateProduct } from '../domains/models/ICreateProduct';
 import { IProductsRepository } from '../domains/repositories/IProductsRepository';
 import { Product } from '../infra/database/entities/Product';
 
+@injectable()
 export default class CreateProductService {
-  constructor(private readonly ProductsRepository: IProductsRepository) {}
+  constructor(@inject('ProductsRepository')private readonly ProductsRepository: IProductsRepository) {}
   public async execute({
     name,
     price,

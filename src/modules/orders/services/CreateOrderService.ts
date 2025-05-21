@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import AppError from '../../../shared/erros/AppError';
-import { ProductsRepository } from '../../products/infra/database/entities/Repositiries/ProductsRepository';
+import { ProductsRepository } from '../../products/infra/database/Repositiries/ProductsRepository';
 import { ICreateOrder } from '../domains/models/CreateOrder';
 import { IOrderRepository } from '../domains/repositories/IOrderRpository';
 import { Order } from '../infra/database/entities/Orders';
