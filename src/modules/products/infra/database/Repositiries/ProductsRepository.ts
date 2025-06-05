@@ -12,7 +12,7 @@ export interface IFindProducts {
   id: number;
 }
 
-export default class ProductsRepository implements IProductsRepository {
+export default class productsRepository implements IProductsRepository {
   private ormRepository: Repository<Product>;
   constructor() {
     this.ormRepository = AppDataSource.getRepository(Product);
@@ -24,14 +24,12 @@ export default class ProductsRepository implements IProductsRepository {
     return this.ormRepository.findOneBy({ id });
   }
   async findAllByIds(products: IFindProducts[]): Promise<Product[]> {
-    const productIds = products.map((product) => product.id);
-
+    const productIds = products.map(product => product.id);
     const existingProducts = await this.ormRepository.find({
       where: {
         id: In(productIds),
       },
     });
-
     return existingProducts;
   }
   async create({ name, price, quantity }: ICreateProduct): Promise<Product> {
@@ -39,7 +37,7 @@ export default class ProductsRepository implements IProductsRepository {
     await this.ormRepository.save(product);
     return product;
   }
-  async save(product: IProduct): Promise<IProduct> {
+  async save(product: IProduct): Promise<Product> {
     const saveproduct = await this.ormRepository.save(product);
     return saveproduct;
   }

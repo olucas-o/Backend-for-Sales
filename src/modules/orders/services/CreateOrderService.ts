@@ -1,10 +1,10 @@
 import { inject, injectable } from 'tsyringe';
 import AppError from '../../../shared/erros/AppError';
-import { ProductsRepository } from '../../products/infra/database/Repositiries/ProductsRepository';
 import { ICreateOrder } from '../domains/models/CreateOrder';
 import { IOrderRepository } from '../domains/repositories/IOrderRpository';
 import { Order } from '../infra/database/entities/Orders';
 import { ICustomersRepository } from '../../customers/domains/repositories/ICustumerRepository';
+import { IProductsRepository } from '../../products/domains/repositories/IProductsRepository';
 
 @injectable()
 export class CreateOrderService {
@@ -13,6 +13,8 @@ export class CreateOrderService {
     private readonly orderRepository: IOrderRepository,
     @inject('CustomersRepository')
     private readonly customersRepository: ICustomersRepository,
+    @inject('ProductsRepository')
+    private readonly productsRepository: IProductsRepository,
   ) {}
   async execute({ customerId, products }: ICreateOrder): Promise<Order> {
     const customerExists = await this.customersRepository.findId(
@@ -22,7 +24,7 @@ export class CreateOrderService {
       throw new AppError('Cliente não encontrado com este ID');
     }
 
-    const existingProducts = await ProductsRepository.findAllByIds(products);
+    const existingProducts = await this.productsRepository.findAllByIds(products);
     if (!existingProducts.length) {
       throw new AppError('Nenhum produto encontrado com os IDs fornecidos');
     }
@@ -48,11 +50,11 @@ export class CreateOrderService {
 
     const updateProductQuantity = order_products.map((product) => ({
       id: product.productsId,
-      quantity:
-        existingProducts.filter((p) => p.id === product.productsId)[0]
-          .quantity - product.quantity,
+      name: product.name,
+      price: number,
+      quantity: existingProducts.filter(p => p.id === product.productsId)[0].quantity - product.quantity,
     }));
-    await ProductsRepository.save(updateProductQuantity);
+    await this.productsRepository.save(updateProductQuantity);
     return order;
   }
 }

@@ -1,4 +1,4 @@
-import { injectable } from 'tsyringe';
+import { inject, injectable } from 'tsyringe';
 import AppError from '../../../shared/erros/AppError';
 import { IOrderRepository } from '../domains/repositories/IOrderRpository';
 import { Order } from '../infra/database/entities/Orders';

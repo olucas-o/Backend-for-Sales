@@ -11,9 +11,9 @@ export interface Pagination {
 export interface IProductsRepository {
   findByName(name: string): Promise<Product | null>;
   findId(id: number): Promise<Product | null>;
-  findAllByIds(products: IFindProducts[]): Promise<Product[]>;
+  findAllByIds(products: IFindProducts[]): Promise<Product[]>
   create(data: ICreateProduct): Promise<Product>;
-  save(product: IProduct): Promise<IProduct>;
+  save(product: IProduct): Promise<Product>;
   remove(product: Product): Promise<void>;
   findAndCount(pagination: Pagination): Promise<[IProduct[], number]>;
 }
