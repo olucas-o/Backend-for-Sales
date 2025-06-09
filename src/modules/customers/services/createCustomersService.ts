@@ -1,3 +1,4 @@
+import AppError from '../../../shared/erros/AppError';
 import { inject, injectable } from 'tsyringe';
 import { ICreateCustomer } from '../domains/models/ICreateUser';
 import { ICustomersRepository } from '../domains/repositories/ICustumerRepository';
@@ -14,7 +15,7 @@ export class CreateCustomerService {
     const emailExists = await this.customersRepository.findByEmail(email);
 
     if (emailExists) {
-      throw new Error('Email address already used');
+      throw new AppError('Email address already used');
     }
 
     const customer = await this.customersRepository.create({ name, email });

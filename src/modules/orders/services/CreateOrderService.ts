@@ -24,7 +24,8 @@ export class CreateOrderService {
       throw new AppError('Cliente não encontrado com este ID');
     }
 
-    const existingProducts = await this.productsRepository.findAllByIds(products);
+    const existingProducts =
+      await this.productsRepository.findAllByIds(products);
     if (!existingProducts.length) {
       throw new AppError('Nenhum produto encontrado com os IDs fornecidos');
     }
@@ -52,7 +53,9 @@ export class CreateOrderService {
       id: product.productsId,
       name: product.name,
       price: number,
-      quantity: existingProducts.filter(p => p.id === product.productsId)[0].quantity - product.quantity,
+      quantity:
+        existingProducts.filter((p) => p.id === product.productsId)[0]
+          .quantity - product.quantity,
     }));
     await this.productsRepository.save(updateProductQuantity);
     return order;

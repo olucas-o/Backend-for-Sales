@@ -24,7 +24,7 @@ export default class productsRepository implements IProductsRepository {
     return this.ormRepository.findOneBy({ id });
   }
   async findAllByIds(products: IFindProducts[]): Promise<Product[]> {
-    const productIds = products.map(product => product.id);
+    const productIds = products.map((product) => product.id);
     const existingProducts = await this.ormRepository.find({
       where: {
         id: In(productIds),
