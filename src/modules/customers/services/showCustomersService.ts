@@ -1,3 +1,4 @@
+import AppError from '../../../shared/erros/AppError';
 import { inject, injectable } from 'tsyringe';
 import { ICustomersRepository } from '../domains/repositories/ICustumerRepository';
 import { Customer } from '../infra/database/entities/Customers';
@@ -16,7 +17,7 @@ export class ShowCustomerService {
     const customer = await this.customersRepository.findId(id);
 
     if (!customer) {
-      throw new Error('Customer not found');
+      throw new AppError('Customer not found');
     }
 
     return customer;
