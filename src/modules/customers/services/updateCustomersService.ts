@@ -1,3 +1,4 @@
+import AppError from '../../../shared/erros/AppError';
 import { inject, injectable } from 'tsyringe';
 import { IUpdateCustomer } from '../domains/models/IUpdateCustomer';
 import { ICustomersRepository } from '../domains/repositories/ICustumerRepository';
@@ -14,13 +15,13 @@ export class UpdateCustomerService {
     const customer = await this.customersRepository.findId(id);
 
     if (!customer) {
-      throw new Error('Customer not found');
+      throw new AppError('Customer not found');
     }
 
     const emailExists = await this.customersRepository.findByEmail(email);
 
     if (emailExists && emailExists.id !== customer.id) {
-      throw new Error('There is already one customer with this email');
+      throw new AppError('There is already one customer with this email');
     }
 
     customer.name = name;
