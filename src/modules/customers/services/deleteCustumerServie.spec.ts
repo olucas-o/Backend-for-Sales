@@ -14,8 +14,8 @@ describe('DeleteCustomerService', () => {
     );
 
     const customer = await createCustomerService.execute({
-      name: 'John Doe',
-      email: 'johndoe@example.com',
+      name: 'ex',
+      email: 'ex@gmail.com',
     });
 
     await deleteCustomerService.execute({ id: customer.id });
