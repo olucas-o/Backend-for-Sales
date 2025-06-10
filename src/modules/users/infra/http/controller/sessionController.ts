@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import SessionUserService from '../../../services/sessionUserService';
+import SessionUserService from '../../../_services/sessionUserService';
 
 export default class SessionController {
   public async create(request: Request, response: Response): Promise<void> {

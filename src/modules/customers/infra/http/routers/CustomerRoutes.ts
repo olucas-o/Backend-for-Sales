@@ -1,6 +1,6 @@
 import express from 'express';
+import AuthMiddleware from '../../../../../shared/Middleware/authMiddleware';
 import CustomerControllers from '../controller/CustomerControllers';
-import AuthMiddleware from '../../../../../shared/middleware/authMiddleware';
 import {
   CreateCustomerSchema,
   idParamsValidateCustomers,

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import UpdateUserAvatarService from '../../../services/uploadUserAvatarService';
+import UpdateUserAvatarService from '../../../_services/uploadUserAvatarService';
 import { instanceToInstance } from 'class-transformer';
 
 export default class UpdateAvatarController {

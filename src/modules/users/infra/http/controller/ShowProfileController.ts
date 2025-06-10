@@ -1,6 +1,6 @@
-import ShowProfileService from '../../../services/showprofileservice';
+import ShowProfileService from '../../../_services/showprofileservice';
 import { Request, Response } from 'express';
-import UpdateProfileService from '../../../services/updateProfileService';
+import UpdateProfileService from '../../../_services/updateProfileService';
 import { instanceToInstance } from 'class-transformer';
 
 export default class ProfileController {
