@@ -1,20 +1,10 @@
+import { ICreateOrder } from 'src/modules/orders/domains/models/ICreateOrder';
 import { Repository } from 'typeorm';
 import { AppDataSource } from '../../../../../../shared/infra/typeorm/data-source';
-import { Customer } from '../../../../../customers/infra/database/entities/Customers';
 import { IOrder } from '../../../../domains/models/IOrder';
 import { IOrderRepository } from '../../../../domains/repositories/IOrderRpository';
 import { Order } from '../Orders';
 
-export interface ICreateOrder {
-  customer: Customer;
-  products: ICreateOrderProducts[];
-}
-
-export interface ICreateOrderProducts {
-  productsId: number;
-  quantity: number;
-  price: number;
-}
 
 export default class ordersRepository implements IOrderRepository {
   private ormRepository: Repository<Order>;

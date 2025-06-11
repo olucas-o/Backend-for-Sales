@@ -1,5 +1,5 @@
 import { Order } from '../../infra/database/entities/Orders';
-import { ICreateOrder } from '../../infra/database/entities/repositories/orderRepository';
+import { ICreateOrder } from 'src/modules/orders/domains/models/ICreateOrder';
 import { IOrder } from '../models/IOrder';
 
 export interface Pagination {

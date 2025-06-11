@@ -1,6 +1,5 @@
 import AppError from '../../../shared/erros/AppError';
 import FakeCustomersRepository from '../domains/fakes/FakeCustomerRepositorie';
-import { Customer } from '../infra/database/entities/Customers';
 import { CreateCustomerService } from './createCustomersService';
 import { ShowCustomerService } from './showCustomersService';
 
