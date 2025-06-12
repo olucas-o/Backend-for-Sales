@@ -9,7 +9,7 @@ import {
 
 export default class FakeProductsRepository implements IProductsRepository {
   private products: Product[] = [];
-  async findAllByIds(products: IFindProducts[]): Promise<Product[]> {
+  async findAllByIds(_products: IFindProducts[]): Promise<Product[]> {
     throw new Error('Method not implemented.');
   }
   async findByName(name: string): Promise<Product | null> {

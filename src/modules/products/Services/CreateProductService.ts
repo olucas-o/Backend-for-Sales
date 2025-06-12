@@ -14,7 +14,7 @@ export default class CreateProductService {
     name,
     price,
     quantity,
-    description
+    description,
   }: ICreateProduct): Promise<Product> {
     const productExists = await this.ProductsRepository.findByName(name);
 
@@ -26,7 +26,7 @@ export default class CreateProductService {
       name,
       price,
       quantity,
-      description
+      description,
     });
 
     return product;

@@ -4,7 +4,7 @@ import AppError from '../../../shared/erros/AppError';
 import { IProductsRepository } from '../domains/repositories/IProductsRepository';
 
 interface IDeleteProduct {
-  id: string;
+  id: number;
 }
 
 @injectable()
