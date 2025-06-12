@@ -4,15 +4,17 @@ import { CreateCustomerService } from './createCustomersService';
 import { UpdateCustomerService } from './updateCustomersService';
 
 describe('UpdateCustomerService', () => {
-  it('should be able to update a customer', async () => {
-    const fakeCustomersRepository = new FakeCustomersRepository();
-    const createCustomerService = new CreateCustomerService(
-      fakeCustomersRepository,
-    );
-    const updateCustomerService = new UpdateCustomerService(
-      fakeCustomersRepository,
-    );
+  let fakeCustomersRepository: FakeCustomersRepository;
+  let createCustomerService: CreateCustomerService;
+  let updateCustomerService: UpdateCustomerService;
 
+  beforeEach(() => {
+    fakeCustomersRepository = new FakeCustomersRepository();
+    createCustomerService = new CreateCustomerService(fakeCustomersRepository);
+    updateCustomerService = new UpdateCustomerService(fakeCustomersRepository);
+  });
+
+  it('should be able to update a customer', async () => {
     const customer = await createCustomerService.execute({
       name: 'Ex original Name',
       email: 'exoriginal@gmail.com',
@@ -29,11 +31,6 @@ describe('UpdateCustomerService', () => {
   });
 
   it('should not be able to update a non-existing customer', async () => {
-    const fakeCustomersRepository = new FakeCustomersRepository();
-    const updateCustomerService = new UpdateCustomerService(
-      fakeCustomersRepository,
-    );
-
     await expect(
       updateCustomerService.execute({
         id: 999,
@@ -44,14 +41,6 @@ describe('UpdateCustomerService', () => {
   });
 
   it('should not update with an email that is already in use by another customer', async () => {
-    const fakeCustomersRepository = new FakeCustomersRepository();
-    const createCustomerService = new CreateCustomerService(
-      fakeCustomersRepository,
-    );
-    const updateCustomerService = new UpdateCustomerService(
-      fakeCustomersRepository,
-    );
-
     const customerToUpdate = await createCustomerService.execute({
       name: 'Ex Customer One',
       email: 'excustomerone@gmail.com',
@@ -72,14 +61,6 @@ describe('UpdateCustomerService', () => {
   });
 
   it('should be able to update the customer with their own email', async () => {
-    const fakeCustomersRepository = new FakeCustomersRepository();
-    const createCustomerService = new CreateCustomerService(
-      fakeCustomersRepository,
-    );
-    const updateCustomerService = new UpdateCustomerService(
-      fakeCustomersRepository,
-    );
-
     const customer = await createCustomerService.execute({
       name: 'Ex Original Name',
       email: 'exoriginal@example.com',
@@ -96,11 +77,6 @@ describe('UpdateCustomerService', () => {
   });
 
   it('should propagate an error if the repository fails', async () => {
-    const fakeCustomersRepository = new FakeCustomersRepository();
-    const updateCustomerService = new UpdateCustomerService(
-      fakeCustomersRepository,
-    );
-
     jest
       .spyOn(fakeCustomersRepository, 'findId')
       .mockRejectedValueOnce(new Error('Database is down'));
