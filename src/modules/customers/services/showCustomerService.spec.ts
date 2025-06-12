@@ -4,21 +4,21 @@ import { CreateCustomerService } from './createCustomersService';
 import { ShowCustomerService } from './showCustomersService';
 
 describe('ShowCustomerService', () => {
+  let fakeCustumerRepository: FakeCustomersRepository;
+  let createCustumerervice: CreateCustomerService;
+  let showCustumerervice: ShowCustomerService;
+  beforeEach(() => {
+    fakeCustumerRepository = new FakeCustomersRepository();
+    createCustumerervice = new CreateCustomerService(fakeCustumerRepository);
+    showCustumerervice = new ShowCustomerService(fakeCustumerRepository);
+  });
   it('should be able to show a customer', async () => {
-    const fakeCustomersRepository = new FakeCustomersRepository();
-    const createCustomerService = new CreateCustomerService(
-      fakeCustomersRepository,
-    );
-    const showCustomerService = new ShowCustomerService(
-      fakeCustomersRepository,
-    );
-
-    const createdCustomer = await createCustomerService.execute({
+    const createdCustomer = await createCustumerervice.execute({
       name: 'Ex',
       email: 'ex@gmail.com',
     });
 
-    const customer = await showCustomerService.execute({
+    const customer = await showCustumerervice.execute({
       id: createdCustomer.id,
     });
 
@@ -27,13 +27,8 @@ describe('ShowCustomerService', () => {
   });
 
   it('should not be able to show a non-existing customer', async () => {
-    const fakeCustomersRepository = new FakeCustomersRepository();
-    const showCustomerService = new ShowCustomerService(
-      fakeCustomersRepository,
-    );
-
     await expect(
-      showCustomerService.execute({ id: 999 }),
+      showCustumerervice.execute({ id: 999 }),
     ).rejects.toBeInstanceOf(AppError);
   });
 
