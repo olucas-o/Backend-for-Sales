@@ -5,7 +5,6 @@ import { IOrder } from '../../../../domains/models/IOrder';
 import { IOrderRepository } from '../../../../domains/repositories/IOrderRpository';
 import { Order } from '../Orders';
 
-
 export default class ordersRepository implements IOrderRepository {
   private ormRepository: Repository<Order>;
   constructor() {
