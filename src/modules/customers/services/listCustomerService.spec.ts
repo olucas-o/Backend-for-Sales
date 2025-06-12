@@ -3,12 +3,14 @@ import { Customer } from '../infra/database/entities/Customers';
 import ListCustomerService from './listCustumersService';
 
 describe('ListCustomerService', () => {
-  it('should be able to list customers with pagination', async () => {
-    const fakeCustomersRepository = new FakeCustomersRepository();
-    const listCustomerService = new ListCustomerService(
-      fakeCustomersRepository,
-    );
+  let fakeCustomerRepository: FakeCustomersRepository;
+  let listCustomerService: ListCustomerService;
 
+  beforeEach(() => {
+    fakeCustomerRepository = new FakeCustomersRepository();
+    listCustomerService = new ListCustomerService(fakeCustomerRepository);
+  });
+  it('should be able to list customers with pagination', async () => {
     const mockCustomerList: Customer[] = [
       {
         id: 6,
@@ -49,7 +51,7 @@ describe('ListCustomerService', () => {
     const mockTotalCount = 15;
 
     jest
-      .spyOn(fakeCustomersRepository, 'findAndCount')
+      .spyOn(fakeCustomerRepository, 'findAndCount')
       .mockResolvedValueOnce([mockCustomerList, mockTotalCount]);
 
     const page = 2;
@@ -83,13 +85,8 @@ describe('ListCustomerService', () => {
   });
 
   it('should return correct pagination when result is empty', async () => {
-    const fakeCustomersRepository = new FakeCustomersRepository();
-    const listCustomerService = new ListCustomerService(
-      fakeCustomersRepository,
-    );
-
     jest
-      .spyOn(fakeCustomersRepository, 'findAndCount')
+      .spyOn(fakeCustomerRepository, 'findAndCount')
       .mockResolvedValueOnce([[], 0]);
 
     const paginatedResult = await listCustomerService.execute();
@@ -102,13 +99,8 @@ describe('ListCustomerService', () => {
   });
 
   it('should propagate an error if the repository fails', async () => {
-    const fakeCustomersRepository = new FakeCustomersRepository();
-    const listCustomerService = new ListCustomerService(
-      fakeCustomersRepository,
-    );
-
     jest
-      .spyOn(fakeCustomersRepository, 'findAndCount')
+      .spyOn(fakeCustomerRepository, 'findAndCount')
       .mockRejectedValueOnce(new Error('Database is offline'));
 
     await expect(listCustomerService.execute()).rejects.toThrow(
